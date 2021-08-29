@@ -81,9 +81,9 @@ class Contact extends Component {
                                          />
                                     <Errors className="text-danger" model=".firstname" show="touched"
                                       messages={{
-                                          required: "Required",
-                                          minLength: "Must be grater than 3 chars",
-                                          maxLength: "Must be less than 20 chars"
+                                          required: "| Required ",
+                                          minLength: "| Must be grater than 3 chars ",
+                                          maxLength: "| Must be less than 20 chars "
                                       }}
                                     />     
                                 </Col>
@@ -102,9 +102,9 @@ class Contact extends Component {
                                          />
                                     <Errors className="text-danger" model=".lastname" show="touched"
                                       messages={{
-                                          required: "Required",
-                                          minLength: "Must be grater than 3 chars",
-                                          maxLength: "Must be less than 20 chars"
+                                          required: "| Required ",
+                                          minLength: "| Must be grater than 3 chars ",
+                                          maxLength: "| Must be less than 20 chars "
                                       }}
                                     />     
                                 </Col>
@@ -124,10 +124,10 @@ class Contact extends Component {
                                          />
                                     <Errors className="text-danger" model=".telnum" show="touched"
                                       messages={{
-                                          required: "Required",
-                                          minLength: "Must be grater than 3 numbers",
-                                          maxLength: "Must be less than 20 numbers",
-                                          isNumber: "Must be a number"
+                                          required: "| Required ",
+                                          minLength: "| Must be grater than 3 numbers ",
+                                          maxLength: "| Must be less than 20 numbers ",
+                                          isNumber: "| Must be a number "
                                       }}
                                     />     
                                 </Col>
@@ -144,8 +144,8 @@ class Contact extends Component {
                                     }} />
                                     <Errors className="text-danger" model=".email" show="touched"
                                       messages={{
-                                          required: "Required",
-                                          validEmail: "Invalid Email"
+                                          required: "| Required ",
+                                          validEmail: "| Invalid Email "
                                       }}
                                     />
                                 </Col>
