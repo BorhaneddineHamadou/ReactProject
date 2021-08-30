@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Control, Errors, LocalForm } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, Button, BreadcrumbItem, Card, CardImg, CardText, CardTitle, Modal, ModalHeader, ModalBody, Label, Row, Col } from 'reactstrap';
+import { baseUrl } from '../shared/baseUrl';
 import { Loading } from './LoadingComponent';
 
 
@@ -89,7 +90,7 @@ function RenderDish({dish}){
     if(dish != null){
         return(
          <Card>
-             <CardImg src={dish.image} alt={dish.name}/>
+             <CardImg src={baseUrl + dish.image} alt={dish.name}/>
              <CardTitle>{dish.name}</CardTitle>
              <CardText>{dish.description}</CardText>
          </Card>
