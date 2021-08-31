@@ -1,32 +1,29 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
+import {Fade, Stagger} from 'react-animation-components';
 
 function RenderLeader({leader}){
     return(
-        <Media tag="li" className="row">
-            <Media left middle className="col-2">
-                <Media object src={leader.image} alt={leader.name} />
+        <Fade in>
+            <Media tag="li" className="row">
+                <Media left middle className="col-2">
+                    <Media object src={baseUrl + leader.image} alt={leader.name} />
+                </Media>
+                <Media body className="ml-5 col-10">
+                    <Media heading>{leader.name}</Media>
+                    <h6>{leader.designation}</h6>
+                    <p>{leader.description}</p>
+                </Media>
             </Media>
-            <Media body className="ml-5 col-10">
-                <Media heading>{leader.name}</Media>
-                <h6>{leader.designation}</h6>
-                <p>{leader.description}</p>
-            </Media>
-        </Media>
+        </Fade>
     );
 }
 
 
 function About(props) {
-
-    const leaders = props.leaders.map((leader) => {
-        return (
-            <div key={leader.id}>
-                <RenderLeader leader={leader}/>
-            </div>
-        );
-    });
 
     return(
         <div className="container">
@@ -84,13 +81,38 @@ function About(props) {
                     <br />
                 </div>
                 <div className="col-12">
-                    <Media list>
-                        {leaders}
-                    </Media>
+                    <LeadersSection leaders={props.leaders} />
                 </div>
             </div>
         </div>
     );
+}
+
+function LeadersSection({leaders}){
+    const leads = leaders.leaders.map((leader) => {
+        return (
+            <div key={leader.id}>
+                <Stagger in>
+                   <RenderLeader leader={leader}/>
+                </Stagger>
+            </div>
+        );
+    });
+
+    if(leaders.isLoading){
+        return (
+            <Loading />
+        );
+    }else if(leaders.errmsg){
+        return(
+            <h4>{leaders.errmsg}</h4>
+        );
+    }else{
+        return (
+        <Media list>
+           {leads}
+        </Media>)
+    }
 }
 
 export default About;    
